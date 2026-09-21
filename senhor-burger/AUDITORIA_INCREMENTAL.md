@@ -7,13 +7,14 @@
 - Regra operacional: um problema por ciclo de correção.
 - Após cada correção: publicar imediatamente, revisar HTML/CSS/JS e integração duas vezes; qualquer erro reinicia as duas revisões.
 - Só então o item pode ser marcado como validado e o próximo pode começar.
+- Próximo item operacional: `SB-010`, porque a auditoria contextual do SB-009 encontrou erro na saída Localização → Pedido; após corrigir SB-010, repetir Prova → Localização → Pedido → Localização → Prova antes de certificar SB-009.
 
 ## Estados
 
 - `PENDENTE`: problema identificado, ainda não tratado.
 - `EM_CORRECAO`: único problema ativo do ciclo atual.
-- `PUBLICADO`: correção já está no GitHub/site; faltam as duas revisões completas.
-- `VALIDADO`: publicado e aprovado por duas revisões consecutivas sem erro.
+- `PUBLICADO`: correção já está no GitHub/site; faltam as duas revisões completas ou a certificação contextual foi bloqueada por outro item registrado.
+- `VALIDADO`: publicado e aprovado por duas revisões consecutivas sem erro e pela auditoria visual exigida.
 - `REABERTO`: regressão ou novo erro encontrado no mesmo ponto; volta ao início.
 
 ## Fila atual
@@ -28,8 +29,8 @@
 | SB-006 | Casa → Prova | Validar expansão de luz/janela sem cobrir o conteúdo da próxima cena nem gerar tela lavada. | VALIDADO | `7626f7dc5a94565624f7ccdba2f5ab01d6cc5b46` + `33d08b00848a76aa34230fdfe2f1b89124e3a735` + cache `2574c8b1c1d6c87f6af9c7e116da4caba8699a20` | corrigido washout no handoff: fundo da Casa migra para creme, foto sai antes e camada de luz recua antes do frame final. Corrigido também o salto do 4,7: clone passa a usar a geometria real do rating da Prova. Após a última correção: 2 revisões completas + 2 revisões finais de HTML/CSS/JS/integração limpas; 4 auditorias visuais independentes, cada viewport com 101 posições × ↓↑↓↑, cobrindo 1440×900, 390×844, 1366×768, 412×915, 1536×864, 360×800, 1280×720 e 430×932; 3.232 estados avaliados, reversibilidade 0,0, 0 seams, 0 washout final, 0 reversões de opacidade e 0 erros de runtime. Desvio máximo do handoff do algarismo 4: 0,39 px. |
 | SB-007 | Prova | Validar entrada/saída do 4,7 e reviews, inclusive subida do scroll, sem sumiços prematuros. | VALIDADO | `755fc89f48fd7c79cc6f592f4415064fa821bef8` + cache `76e48efa50830455f18e0e6dc0e039902e3f43b5` | corrigida sobreposição entre reviews: janelas separadas em p=.50 e saída vertical contextual; 2 revisões completas + 2 revisões finais de HTML/CSS/JS/integração limpas; 4 auditorias visuais independentes cobrindo 1440×900, 390×844, 1366×768, 412×915, 1536×864, 360×800, 1280×720 e 430×932; 5.472 estados avaliados; reversibilidade 0,0, 0 sobreposições, 0 clipping, 0 NaN, 0 erros de runtime e RMS amostral 0,0. |
 | SB-008 | Prova → Localização | Validar estrela → pin e transição creme → escuro sem faixa/corte horizontal perceptível. | VALIDADO | `1283dcc2cb2dbb43429a9dee0266425ad5671321` + cache `b19af0843f8ff34ec76b52b0ed5eb287ab4b26be` + `acb9c7b55b0130af93d7111e73eb759ee634db30` + cache `a639e0d34fbf2abb0bfe2b80c90363f616d5b91c` | corrigida origem geométrica do 4,7/estrela: clone passa a nascer da geometria real estabilizada da Prova, sem acompanhar a seção durante a subida. Corrigido também o handoff final do pin/mapa: pin permanece visível na dobra, mapa termina com a mesma opacidade da cena real e a rota deixa de ser pré-desenhada antes da hora. 2 revisões completas + 2 revisões finais de HTML/CSS/JS/integração limpas; 4 auditorias visuais independentes cobrindo 1440×900, 390×844, 1366×768, 412×915, 1536×864, 360×800, 1280×720 e 430×932; 5.472 estados avaliados; reversibilidade visual 0,0, RMS amostral 0,0, 0 reversões da trajetória da estrela, 0 seams horizontais, 0 erros de runtime. Desvio máximo da origem do rating: 0,008 px; desvio máximo do pin no handoff: 0,39 px. |
-| SB-009 | Localização | Validar desenho da rota, pin, título/endereço e reversibilidade completa. | EM_CORRECAO | — | auditoria contextual Prova → Localização → Pedido iniciada |
-| SB-010 | Localização → Pedido | Validar mapa → vermelho final e entrada do CTA sem objeto arbitrário nem troca brusca de fundo. | PENDENTE | — | — |
+| SB-009 | Localização | Validar desenho da rota, pin, título/endereço e reversibilidade completa. | PUBLICADO | `e8044dc508c1fc97524467508c31ea21916a7e51` | corrigida hierarquia de camadas: rota passa atrás de `NOVA CONTAGEM`, preservando leitura sem alterar geometria. 2 revisões de HTML/CSS/JS/integração limpas; auditoria contextual pós-correção em 1440×900 e 390×844, 101 estados por direção × 2 ciclos por viewport, reversibilidade 0,0, 0 overlaps de título/meta/label, 0 reversões da rota e 0 erros de runtime. Certificação contextual final bloqueada pelo SB-010: saída para Pedido apresenta faixa horizontal e sobreposição simultânea entre títulos. |
+| SB-010 | Localização → Pedido | Corrigir faixa/corte horizontal perceptível na troca escuro → vermelho e sobreposição simultânea `NOVA CONTAGEM` / `ESCOLHA O SEU.`; validar mapa → vermelho final e entrada do CTA sem objeto arbitrário nem troca brusca de fundo. | PENDENTE | — | problema confirmado durante auditoria contextual do SB-009 |
 | SB-011 | Pedido | Validar entrada do burger final, CTA, links e saída para footer. | PENDENTE | — | — |
 | SB-012 | Conteúdo / função | Revisar textos vagos e links ainda provisórios (`#pedido`, Instagram/Cardápio) para separar protótipo de comportamento final. | PENDENTE | — | — |
 | SB-013 | Integração | Revisar conflitos entre CSS e JS sobre `transform`, `opacity`, `background`, z-index e estados sticky/fixed. | PENDENTE | — | — |
@@ -45,9 +46,10 @@
 5. Revisar HTML completo, CSS completo, JavaScript completo e integração — passagem 1.
 6. Repetir a revisão completa — passagem 2.
 7. Se qualquer erro surgir, corrigir, publicar e reiniciar as duas passagens do zero.
-8. Com duas passagens consecutivas limpas, marcar `VALIDADO`.
-9. Só então selecionar o próximo item.
+8. Com duas passagens consecutivas limpas, executar a auditoria visual contextual exigida.
+9. Se a auditoria contextual descobrir erro em uma transição adjacente, registrar esse item como dependência operacional e corrigi-lo em ciclo próprio antes da certificação contextual final.
+10. Só depois da certificação contextual limpa marcar `VALIDADO`.
 
 ## Regra de continuidade
 
-Ao retomar o projeto em outro turno/conversa, ler este arquivo primeiro. Não confiar apenas no histórico do chat. O primeiro item não validado define o próximo trabalho.
+Ao retomar o projeto em outro turno/conversa, ler este arquivo primeiro. Não confiar apenas no histórico do chat. Quando houver `Próximo item operacional` explícito por dependência contextual, ele prevalece sobre a simples ordem numérica da fila.
