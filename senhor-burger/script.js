@@ -103,9 +103,14 @@ function renderOrder(p){
 
 function bridgeHeroProducts(e){
   if(e<=0||e>=1)return;
-  const t=smoother(e),a=rectCenter(heroBurger.getBoundingClientRect()),b=rectCenter(productStack.getBoundingClientRect());
-  heroBurger.style.visibility='hidden';productStack.style.visibility='hidden';setFixedBox(bridgeBurger,mix(a.x,b.x,t),mix(a.y,b.y,t),mix(a.w,b.w,t),mix(a.h,b.h,t),1);setOpacity(bridgeBurger,1);
-  heroStage.style.background=color([12,9,7],[124,37,29],smooth(range(t,.08,.92)));
+  const t=smoother(e),rawA=rectCenter(heroBurger.getBoundingClientRect()),rawB=rectCenter(productStack.getBoundingClientRect());
+  const a={...rawA,y:rawA.y+innerHeight*e},b={...rawB,y:rawB.y-innerHeight*(1-e)};
+  const x=mix(a.x,b.x,t),y=mix(a.y,b.y,t),w=mix(a.w,b.w,t),h=mix(a.h,b.h,t);
+  heroBurger.style.visibility='hidden';productStack.style.visibility='hidden';
+  setFixedBox(bridgeBurger,x,y,w,h,1);setFixedBox(bridgeProduct,x,y,w,h,1);
+  const morph=smooth(range(t,.68,.94));setOpacity(bridgeBurger,1-morph);setOpacity(bridgeProduct,morph);
+  const bg=color([12,9,7],[124,37,29],smooth(range(t,.04,.88)));heroStage.style.background=bg;productsStage.style.background=bg;
+  const exit=smooth(range(t,.08,.56));heroTitle.style.opacity=String((+heroTitle.style.opacity||0)*(1-exit));heroKicker.style.opacity=String((+heroKicker.style.opacity||0)*(1-exit));[heroA,heroB,heroC].forEach(el=>setOpacity(el,(+el.style.opacity||0)*(1-exit)));
   setOpacity(pcs[0],smooth(range(t,.72,.98))*.95);
 }
 
