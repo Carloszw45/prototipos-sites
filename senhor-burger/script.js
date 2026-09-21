@@ -86,9 +86,9 @@ function renderHouse(p){
 }
 
 function renderProof(p){
-  const r1=smooth(range(p,.16,.28))*(1-smooth(range(p,.46,.56))),r2=smooth(range(p,.50,.62))*(1-smooth(range(p,.76,.86)));
+  const r1In=smooth(range(p,.16,.28)),r1Out=smooth(range(p,.44,.50)),r2In=smooth(range(p,.50,.62)),r2Out=smooth(range(p,.76,.86)),r1=r1In*(1-r1Out),r2=r2In*(1-r2Out);
   setOpacity(rating,1);rating.style.transform='translateY(-50%) scale(1)';setOpacity(ratingSub,1);
-  setOpacity(rvs[0],r1);setOpacity(rvs[1],r2);rvs[0].style.transform=`translateY(calc(-50% + ${mix(26,0,smooth(range(p,.16,.28)))}px))`;rvs[1].style.transform=`translateY(calc(-50% + ${mix(26,0,smooth(range(p,.50,.62)))}px))`;
+  setOpacity(rvs[0],r1);setOpacity(rvs[1],r2);rvs[0].style.transform=`translateY(calc(-50% + ${mix(26,0,r1In)-mix(0,16,r1Out)}px))`;rvs[1].style.transform=`translateY(calc(-50% + ${mix(26,0,r2In)-mix(0,16,r2Out)}px))`;
   setOpacity(reviews,1);[four,comma,seven,star].forEach(el=>setOpacity(el,1));seven.style.transform='none';if(p>.80){const t=smooth(range(p,.80,.95));setOpacity(reviews,1-t);setOpacity(ratingSub,1-smooth(range(p,.84,.96)));}
 }
 
