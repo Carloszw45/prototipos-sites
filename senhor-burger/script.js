@@ -135,7 +135,7 @@ function bridgeHouseProof(e){
   const bg=color([40,26,18],[234,223,206],smooth(range(t,.24,.90)));houseStage.style.background=bg;
   setFixedBox(bridgeHouse,mix(c.x,innerWidth/2,t),mix(c.y,innerHeight/2,t),mix(hr.width,innerWidth,t),mix(hr.height,innerHeight,t),1);setOpacity(bridgeHouse,1-smooth(range(t,.72,.94)));bridgeHouse.style.filter=`saturate(${mix(1,.66,t)}) brightness(${mix(1,1.13,t)})`;
   const lightIn=smooth(range(t,.30,.72)),lightOut=1-smooth(range(t,.90,.99));bridgeLight.style.background='rgba(234,223,206,.82)';setOpacity(bridgeLight,lightIn*lightOut);
-  const rb=ratingBox();bridgeRating.style.left=`${rb.left}px`;bridgeRating.style.top=`${rb.top}px`;bridgeRating.style.width=`${rb.width}px`;bridgeRating.style.height=`${rb.height}px`;bridgeRating.style.transform='translateY(-50%)';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color='var(--ink)';setOpacity(bridgeRating,smooth(range(t,.68,.95)));setOpacity(ratingSub,smooth(range(t,.60,.92)));
+  const rr=rating.getBoundingClientRect(),pr=proof.getBoundingClientRect();bridgeRating.style.left=`${rr.left}px`;bridgeRating.style.top=`${rr.top-pr.top}px`;bridgeRating.style.width=`${rr.width}px`;bridgeRating.style.height=`${rr.height}px`;bridgeRating.style.transform='none';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color='var(--ink)';setOpacity(bridgeRating,smooth(range(t,.68,.95)));setOpacity(ratingSub,smooth(range(t,.60,.92)));
 }
 
 function bridgeProofLocation(e){
