@@ -95,7 +95,7 @@ function renderProof(p){
 function renderLocation(p){
   const draw=smooth(range(p,.10,.54)),finish=smooth(range(p,.52,.68));
   setOpacity(locTitle,1);locTitle.style.transform='translateY(-50%)';setOpacity(locMeta,1);setOpacity(routeLabel,finish);setOpacity(routeMap,.84);
-  route.style.strokeDashoffset=String(880*(1-draw));pin.style.transform=`scale(${finish})`;setOpacity(pin,finish);
+  route.style.strokeDashoffset=String(880*(1-draw));pin.style.transform='scale(1)';setOpacity(pin,1);
 }
 
 function renderOrder(p){
@@ -145,8 +145,8 @@ function bridgeProofLocation(e){
   bridgeRating.style.left=`${stableRating.left}px`;bridgeRating.style.top=`${stableRating.top}px`;bridgeRating.style.width=`${stableRating.width}px`;bridgeRating.style.height=`${stableRating.height}px`;bridgeRating.style.transform='none';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color=color([23,17,14],[239,227,210],smooth(range(t,.22,.70)));setOpacity(bridgeRating,1-smooth(range(t,.28,.52)));
   const sr=star.getBoundingClientRect(),rawS=rectCenter(sr),s0={...rawS,y:rawS.y+innerHeight*e};setOpacity(bridgeStar,1-smooth(range(t,.90,1)));bridgeStar.style.fontSize=getComputedStyle(star).fontSize;bridgeStar.style.left=`${mix(s0.x,target.x,t)}px`;bridgeStar.style.top=`${mix(s0.y,target.y,t)}px`;bridgeStar.style.transform=`translate(-50%,-50%) scale(${mix(1,.68,t)}) rotate(${mix(0,10,t)}deg)`;bridgeStar.style.color=color([23,17,14],[182,58,49],t);
   bridgeLocTitle.style.position='fixed';bridgeLocTitle.style.left=mobile()?'20px':'6vw';bridgeLocTitle.style.top=mobile()?'30%':'50%';bridgeLocTitle.style.transform='translateY(-50%)';bridgeLocTitle.style.fontSize=getComputedStyle(locTitle).fontSize;setOpacity(bridgeLocTitle,smooth(range(t,.48,.72)));
-  bridgeMap.style.left=`${mr.left}px`;bridgeMap.style.top=`${mr.top}px`;bridgeMap.style.width=`${mr.width}px`;bridgeMap.style.height=`${mr.height}px`;bridgeMap.style.transform='none';setOpacity(bridgeMap,.50*smooth(range(t,.40,.70)));
-  if(bridgeMapRoute){bridgeMapRoute.style.strokeDashoffset=String(mix(880,500,smooth(range(t,.38,.82))));bridgeMapRoute.style.strokeWidth='5';}if(bridgeMapPin){const ps=smooth(range(t,.62,.90));bridgeMapPin.style.transform=`scale(${ps})`;setOpacity(bridgeMapPin,ps);}setOpacity(locMeta,smooth(range(t,.58,.78)));
+  bridgeMap.style.left=`${mr.left}px`;bridgeMap.style.top=`${mr.top}px`;bridgeMap.style.width=`${mr.width}px`;bridgeMap.style.height=`${mr.height}px`;bridgeMap.style.transform='none';setOpacity(bridgeMap,.84*smooth(range(t,.40,.82)));
+  if(bridgeMapRoute){bridgeMapRoute.style.strokeDashoffset='880';bridgeMapRoute.style.strokeWidth='5';}if(bridgeMapPin){const ps=smooth(range(t,.62,.90));bridgeMapPin.style.transform=`scale(${ps})`;setOpacity(bridgeMapPin,ps);}setOpacity(locMeta,smooth(range(t,.58,.78)));
 }
 
 function bridgeLocationOrder(e){
