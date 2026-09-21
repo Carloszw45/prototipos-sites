@@ -62,7 +62,7 @@ function renderHero(p){
     const dim=smooth(range(p,.08,.18)),exit=smooth(range(p,.72,.94));
     heroTitle.style.opacity=String(mix(mix(.92,.28,dim),.16,exit));heroKicker.style.opacity=String(1-smooth(range(p,.06,.16)));
   }else{
-    heroTitle.style.opacity=String(mix(.95,.42,smooth(range(p,.72,.94)));heroKicker.style.opacity=String(1-smooth(range(p,.76,.95)));
+    heroTitle.style.opacity=String(mix(.95,.42,smooth(range(p,.72,.94))));heroKicker.style.opacity=String(1-smooth(range(p,.76,.95)));
   }
 }
 
@@ -117,7 +117,7 @@ function bridgeProductsHouse(e){
   if(e<=0||e>=1)return;
   const t=smoother(e),rawA=rectCenter(productStack.getBoundingClientRect()),hr=houseRect(),pc={x:hr.left+hr.width/2,y:hr.top+hr.height/2};
   const a={...rawA,y:rawA.y+innerHeight*e};
-  const targetScale=mobile()?.56:.48,target={x:hr.left+hr.width*(mobile()?.58:.64),y:hr.top+hr.height*(mobile()?.72:.72),w:a.w*targetScale,h:a.h*targetScale};
+  const targetScale=mobile()?.56:.48,target={x:hr.left+hr.width*(mobile()?.58:.64),y:hr.top+hr.height*.72,w:a.w*targetScale,h:a.h*targetScale};
   const move=smoother(range(t,.04,.94)),size=smoother(range(t,.18,.94));
   productStack.style.visibility='hidden';housePhoto.style.visibility='hidden';
   const bg=color([124,37,29],[40,26,18],smooth(range(t,.06,.92)));productsStage.style.background=bg;houseStage.style.background=bg;
