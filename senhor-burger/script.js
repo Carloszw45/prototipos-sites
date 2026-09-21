@@ -38,12 +38,12 @@ const bridgeMapRoute=bridgeMap.querySelector('.route'), bridgeMapPin=bridgeMap.q
 const heroOff=[-58,-42,-24,-6,14,31,49,67,84];
 
 function resetFrame(){
-  [bridgeBurger,bridgeProduct,bridgeLight,bridgeStar,bridgeMap,bridgeHouse,bridgeRating,bridgeLocTitle,bridgeOrderTitle].forEach(el=>{setOpacity(el,0);el.style.filter='';});
+  [bridgeBurger,bridgeProduct,bridgeLight,bridgeStar,bridgeMap,bridgeHouse,bridgeRating,bridgeLocTitle,bridgeOrderTitle].forEach(el=>{setOpacity(el,0);el.style.filter='';el.style.clipPath='';});
   bridgeLight.style.background='transparent';
   heroStage.style.background='radial-gradient(circle at 50% 58%,rgba(164,42,33,.18),transparent 32%),linear-gradient(#100c09,#0b0806)';
-  productsStage.style.background='#7c251d'; houseStage.style.background='var(--house)'; proofStage.style.background='var(--paper)'; locationStage.style.background='#15110f'; orderStage.style.background='radial-gradient(circle at 70% 45%,rgba(255,180,100,.14),transparent 26%),var(--red2)';
-  heroBurger.style.visibility='visible'; productStack.style.visibility='visible'; housePhoto.style.visibility='visible'; rating.style.visibility='visible'; star.style.visibility='visible'; routeMap.style.visibility='visible'; locTitle.style.visibility='visible'; orderTitle.style.visibility='visible'; rating.style.color='var(--ink)';
-  route.style.strokeWidth='5'; route.style.stroke='#b63a31'; route.style.opacity='1';
+  productsStage.style.background='#7c251d';houseStage.style.background='var(--house)';proofStage.style.background='var(--paper)';locationStage.style.background='#15110f';orderStage.style.background='radial-gradient(circle at 70% 45%,rgba(255,180,100,.14),transparent 26%),var(--red2)';
+  heroBurger.style.visibility='visible';productStack.style.visibility='visible';housePhoto.style.visibility='visible';rating.style.visibility='visible';star.style.visibility='visible';routeMap.style.visibility='visible';locTitle.style.visibility='visible';orderTitle.style.visibility='visible';rating.style.color='var(--ink)';
+  route.style.strokeWidth='5';route.style.stroke='#b63a31';route.style.opacity='1';
 }
 
 function renderHero(p){
@@ -60,22 +60,18 @@ function renderHero(p){
   setOpacity(hint,1-smooth(range(p,.02,m?.10:.14)));
   if(m){
     const dim=smooth(range(p,.08,.18)),exit=smooth(range(p,.72,.94));
-    heroTitle.style.opacity=String(mix(mix(.92,.28,dim),.16,exit));
-    heroKicker.style.opacity=String(1-smooth(range(p,.06,.16)));
+    heroTitle.style.opacity=String(mix(mix(.92,.28,dim),.16,exit));heroKicker.style.opacity=String(1-smooth(range(p,.06,.16)));
   }else{
-    heroTitle.style.opacity=String(mix(.95,.42,smooth(range(p,.72,.94))));
-    heroKicker.style.opacity=String(1-smooth(range(p,.76,.95)));
+    heroTitle.style.opacity=String(mix(.95,.42,smooth(range(p,.72,.94)));heroKicker.style.opacity=String(1-smooth(range(p,.76,.95)));
   }
 }
 
 function renderProducts(p){
   const m=mobile();
-  const s1=(1-smooth(range(p,.25,.35))),s2=smooth(range(p,.31,.41))*(1-smooth(range(p,.53,.63))),s3=smooth(range(p,.59,.69))*(1-smooth(range(p,.84,.93)));
+  const s1=1-smooth(range(p,.25,.35)),s2=smooth(range(p,.31,.41))*(1-smooth(range(p,.53,.63))),s3=smooth(range(p,.59,.69))*(1-smooth(range(p,.84,.93)));
   setOpacity(pcs[0],s1);setOpacity(pcs[1],s2);setOpacity(pcs[2],s3);
   const in2=smooth(range(p,.31,.41)),out1=smooth(range(p,.25,.35)),in3=smooth(range(p,.59,.69)),copyLift=m?-.03*innerHeight:0;
-  pcs[0].style.transform=`translate3d(0,${copyLift+mix(0,-18,out1)}px,0)`;
-  pcs[1].style.transform=`translate3d(0,${copyLift+mix(20,0,in2)-mix(0,14,smooth(range(p,.53,.63)))}px,0)`;
-  pcs[2].style.transform=`translate3d(0,${copyLift+mix(22,0,in3)}px,0)`;
+  pcs[0].style.transform=`translate3d(0,${copyLift+mix(0,-18,out1)}px,0)`;pcs[1].style.transform=`translate3d(0,${copyLift+mix(20,0,in2)-mix(0,14,smooth(range(p,.53,.63)))}px,0)`;pcs[2].style.transform=`translate3d(0,${copyLift+mix(22,0,in3)}px,0)`;
   const drift=m?mix(0,-1.5,smooth(range(p,.08,.82))):mix(0,-2.5,smooth(range(p,.08,.82))),base=m?.86:1,sc=base*mix(.96,1.02,smooth(range(p,.08,.72)));
   productStack.style.right=m?'-9vw':'5vw';productStack.style.left='auto';productStack.style.top=m?'72%':'50%';productStack.style.transform=`translateY(-50%) translate3d(${drift}vw,${mix(0,m?1:-1,p)}vh,0) scale(${sc})`;setOpacity(productStack,1);
   const separate=smooth(range(p,.37,.49))*(1-smooth(range(p,.56,.69))),baseOff=[-24,-18,-11,-5,2,8,14,20,26],amp=m?.58:1;
@@ -112,57 +108,53 @@ function bridgeHeroProducts(e){
   const t=smoother(e),rawA=rectCenter(heroBurger.getBoundingClientRect()),rawB=rectCenter(productStack.getBoundingClientRect());
   const a={...rawA,y:rawA.y+innerHeight*e},b={...rawB,y:rawB.y-innerHeight*(1-e)};
   const x=mix(a.x,b.x,t),y=mix(a.y,b.y,t),w=mix(a.w,b.w,t),h=mix(a.h,b.h,t);
-  heroBurger.style.visibility='hidden';productStack.style.visibility='hidden';
-  setFixedBox(bridgeBurger,x,y,w,h,1);setOpacity(bridgeBurger,1);
+  heroBurger.style.visibility='hidden';productStack.style.visibility='hidden';setFixedBox(bridgeBurger,x,y,w,h,1);setOpacity(bridgeBurger,1);
   const bg=color([12,9,7],[124,37,29],smooth(range(t,.04,.88)));heroStage.style.background=bg;productsStage.style.background=bg;
-  const exit=smooth(range(t,.08,.56));heroTitle.style.opacity=String((+heroTitle.style.opacity||0)*(1-exit));heroKicker.style.opacity=String((+heroKicker.style.opacity||0)*(1-exit));[heroA,heroB,heroC].forEach(el=>setOpacity(el,(+el.style.opacity||0)*(1-exit)));
-  setOpacity(pcs[0],smooth(range(t,.72,.98))*.95);
+  const exit=smooth(range(t,.08,.56));heroTitle.style.opacity=String((+heroTitle.style.opacity||0)*(1-exit));heroKicker.style.opacity=String((+heroKicker.style.opacity||0)*(1-exit));[heroA,heroB,heroC].forEach(el=>setOpacity(el,(+el.style.opacity||0)*(1-exit)));setOpacity(pcs[0],smooth(range(t,.72,.98))*.95);
 }
 
 function bridgeProductsHouse(e){
   if(e<=0||e>=1)return;
-  const t=smoother(e),a=rectCenter(productStack.getBoundingClientRect()),hr=houseRect(),pc={x:hr.left+hr.width/2,y:hr.top+hr.height/2};
-  const target={x:hr.left+hr.width*(mobile()?.58:.64),y:hr.top+hr.height*(mobile()?.70:.69),w:a.w*(mobile()?.48:.42),h:a.h*(mobile()?.48:.42)};
+  const t=smoother(e),rawA=rectCenter(productStack.getBoundingClientRect()),hr=houseRect(),pc={x:hr.left+hr.width/2,y:hr.top+hr.height/2};
+  const a={...rawA,y:rawA.y+innerHeight*e};
+  const targetScale=mobile()?.56:.48,target={x:hr.left+hr.width*(mobile()?.58:.64),y:hr.top+hr.height*(mobile()?.72:.72),w:a.w*targetScale,h:a.h*targetScale};
+  const move=smoother(range(t,.04,.94)),size=smoother(range(t,.18,.94));
   productStack.style.visibility='hidden';housePhoto.style.visibility='hidden';
-  bridgeLight.style.background=color([124,37,29],[40,26,18],smooth(range(t,.05,.95)));setOpacity(bridgeLight,1);
-  setFixedBox(bridgeHouse,pc.x,pc.y,hr.width,hr.height,1);setOpacity(bridgeHouse,smooth(range(t,.10,.58)));
-  setFixedBox(bridgeProduct,mix(a.x,target.x,t),mix(a.y,target.y,t),mix(a.w,target.w,t),mix(a.h,target.h,t),1);setOpacity(bridgeProduct,1-smooth(range(t,.76,.98)));
-  setOpacity(houseCopy,smooth(range(t,.66,.94))*.90);
+  const bg=color([124,37,29],[40,26,18],smooth(range(t,.06,.92)));productsStage.style.background=bg;houseStage.style.background=bg;
+  const incomingY=pc.y+innerHeight*(1-e);setFixedBox(bridgeHouse,pc.x,incomingY,hr.width,hr.height,1);
+  const reveal=smoother(range(t,.12,.74)),clipTop=mix(52,0,reveal),clipSide=mix(mobile()?18:28,0,reveal),clipBottom=mix(8,0,reveal);
+  bridgeHouse.style.clipPath=`inset(${clipTop}% ${clipSide}% ${clipBottom}% ${clipSide}% round 4px)`;setOpacity(bridgeHouse,smooth(range(t,.08,.60)));
+  setFixedBox(bridgeProduct,mix(a.x,target.x,move),mix(a.y,target.y,move),mix(a.w,target.w,size),mix(a.h,target.h,size),1);setOpacity(bridgeProduct,1-smooth(range(t,.90,1)));
+  setOpacity(houseCopy,smooth(range(t,.72,.96))*.92);
 }
 
 function bridgeHouseProof(e){
   if(e<=0||e>=1)return;
   const t=smoother(e),hr=houseRect(),c={x:hr.left+hr.width/2,y:hr.top+hr.height/2};
-  housePhoto.style.visibility='hidden';rating.style.visibility='hidden';
-  setFixedBox(bridgeHouse,mix(c.x,innerWidth/2,t),mix(c.y,innerHeight/2,t),mix(hr.width,innerWidth,t),mix(hr.height,innerHeight,t),1);setOpacity(bridgeHouse,1-smooth(range(t,.88,1)));bridgeHouse.style.filter=`saturate(${mix(1,.66,t)}) brightness(${mix(1,1.13,t)})`;
+  housePhoto.style.visibility='hidden';rating.style.visibility='hidden';setFixedBox(bridgeHouse,mix(c.x,innerWidth/2,t),mix(c.y,innerHeight/2,t),mix(hr.width,innerWidth,t),mix(hr.height,innerHeight,t),1);setOpacity(bridgeHouse,1-smooth(range(t,.88,1)));bridgeHouse.style.filter=`saturate(${mix(1,.66,t)}) brightness(${mix(1,1.13,t)})`;
   bridgeLight.style.background=`rgba(234,223,206,${smooth(range(t,.38,1))*.95})`;setOpacity(bridgeLight,smooth(range(t,.32,.98)));
-  const rb=ratingBox();bridgeRating.style.left=`${rb.left}px`;bridgeRating.style.top=`${rb.top}px`;bridgeRating.style.width=`${rb.width}px`;bridgeRating.style.height=`${rb.height}px`;bridgeRating.style.transform=mobile()?'translateY(-50%)':'translateY(-50%)';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color='var(--ink)';setOpacity(bridgeRating,smooth(range(t,.68,.95)));
-  setOpacity(ratingSub,smooth(range(t,.60,.92)));
+  const rb=ratingBox();bridgeRating.style.left=`${rb.left}px`;bridgeRating.style.top=`${rb.top}px`;bridgeRating.style.width=`${rb.width}px`;bridgeRating.style.height=`${rb.height}px`;bridgeRating.style.transform='translateY(-50%)';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color='var(--ink)';setOpacity(bridgeRating,smooth(range(t,.68,.95)));setOpacity(ratingSub,smooth(range(t,.60,.92)));
 }
 
 function bridgeProofLocation(e){
   if(e<=0||e>=1)return;
   const t=smoother(range(e,.12,.88)),mr=mapRect(),target={x:mr.left+mr.width*(655/700),y:mr.top+mr.height*(148/540)},rb=ratingBox();
-  rating.style.visibility='hidden';star.style.visibility='hidden';locTitle.style.visibility='hidden';
-  bridgeLight.style.background=color([234,223,206],[21,17,15],t);setOpacity(bridgeLight,1);
+  rating.style.visibility='hidden';star.style.visibility='hidden';locTitle.style.visibility='hidden';bridgeLight.style.background=color([234,223,206],[21,17,15],t);setOpacity(bridgeLight,1);
   bridgeRating.style.left=`${rb.left}px`;bridgeRating.style.top=`${rb.top}px`;bridgeRating.style.width=`${rb.width}px`;bridgeRating.style.height=`${rb.height}px`;bridgeRating.style.transform='translateY(-50%)';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color=color([23,17,14],[239,227,210],smooth(range(t,.22,.70)));setOpacity(bridgeRating,1-smooth(range(t,.28,.52)));
   const sr=star.getBoundingClientRect(),s0=rectCenter(sr);setOpacity(bridgeStar,1-smooth(range(t,.90,1)));bridgeStar.style.fontSize=getComputedStyle(star).fontSize;bridgeStar.style.left=`${mix(s0.x,target.x,t)}px`;bridgeStar.style.top=`${mix(s0.y,target.y,t)}px`;bridgeStar.style.transform=`translate(-50%,-50%) scale(${mix(1,.68,t)}) rotate(${mix(0,10,t)}deg)`;bridgeStar.style.color=color([23,17,14],[182,58,49],t);
   bridgeLocTitle.style.position='fixed';bridgeLocTitle.style.left=mobile()?'20px':'6vw';bridgeLocTitle.style.top=mobile()?'30%':'50%';bridgeLocTitle.style.transform='translateY(-50%)';bridgeLocTitle.style.fontSize=getComputedStyle(locTitle).fontSize;setOpacity(bridgeLocTitle,smooth(range(t,.48,.72)));
   bridgeMap.style.left=`${mr.left}px`;bridgeMap.style.top=`${mr.top}px`;bridgeMap.style.width=`${mr.width}px`;bridgeMap.style.height=`${mr.height}px`;bridgeMap.style.transform='none';setOpacity(bridgeMap,.50*smooth(range(t,.40,.70)));
-  if(bridgeMapRoute){bridgeMapRoute.style.strokeDashoffset=String(mix(880,500,smooth(range(t,.38,.82))));bridgeMapRoute.style.strokeWidth='5';}if(bridgeMapPin){const ps=smooth(range(t,.62,.90));bridgeMapPin.style.transform=`scale(${ps})`;setOpacity(bridgeMapPin,ps);}
-  setOpacity(locMeta,smooth(range(t,.58,.78)));
+  if(bridgeMapRoute){bridgeMapRoute.style.strokeDashoffset=String(mix(880,500,smooth(range(t,.38,.82))));bridgeMapRoute.style.strokeWidth='5';}if(bridgeMapPin){const ps=smooth(range(t,.62,.90));bridgeMapPin.style.transform=`scale(${ps})`;setOpacity(bridgeMapPin,ps);}setOpacity(locMeta,smooth(range(t,.58,.78)));
 }
 
 function bridgeLocationOrder(e){
   if(e<=0||e>=1)return;
-  const t=smoother(e),mr=mapRect();
-  routeMap.style.visibility='hidden';locTitle.style.visibility='hidden';orderTitle.style.visibility='hidden';
+  const t=smoother(e),mr=mapRect();routeMap.style.visibility='hidden';locTitle.style.visibility='hidden';orderTitle.style.visibility='hidden';
   bridgeMap.style.left=`${mr.left}px`;bridgeMap.style.top=`${mr.top}px`;bridgeMap.style.width=`${mr.width}px`;bridgeMap.style.height=`${mr.height}px`;bridgeMap.style.transform=`translate3d(${mix(0,-innerWidth*.010,t)}px,${mix(0,-innerHeight*.010,t)}px,0) scale(${mix(1,.99,t)})`;setOpacity(bridgeMap,.84*(1-smooth(range(t,.44,.86))));
   if(bridgeMapRoute){bridgeMapRoute.style.strokeDashoffset='0';bridgeMapRoute.style.strokeWidth='5';}if(bridgeMapPin){bridgeMapPin.style.transform='scale(1)';setOpacity(bridgeMapPin,1);}
   bridgeLight.style.background=color([21,17,15],[142,33,27],t);setOpacity(bridgeLight,smooth(range(t,.02,.98)));
   bridgeLocTitle.style.position='fixed';bridgeLocTitle.style.left=mobile()?'20px':'6vw';bridgeLocTitle.style.top=`${mix(mobile()?30:50,mobile()?22:38,smooth(range(t,.28,.72)))}%`;bridgeLocTitle.style.transform='translateY(-50%)';bridgeLocTitle.style.fontSize=getComputedStyle(locTitle).fontSize;setOpacity(bridgeLocTitle,1-smooth(range(t,.30,.58)));
-  bridgeOrderTitle.style.position='fixed';bridgeOrderTitle.style.left=mobile()?'20px':'6vw';bridgeOrderTitle.style.top=`${mix(mobile()?36:62,mobile()?28:50,smooth(range(t,.48,.86)))}%`;bridgeOrderTitle.style.transform=mobile()?'none':'translateY(-50%)';bridgeOrderTitle.style.width=mobile()?'calc(100vw - 40px)':'auto';setOpacity(bridgeOrderTitle,smooth(range(t,.36,.62)));
-  setOpacity(locMeta,1-smooth(range(t,.34,.64)));setOpacity(routeLabel,1-smooth(range(t,.24,.58)));setOpacity(orderLinks,.68*smooth(range(t,.54,.78)));
+  bridgeOrderTitle.style.position='fixed';bridgeOrderTitle.style.left=mobile()?'20px':'6vw';bridgeOrderTitle.style.top=`${mix(mobile()?36:62,mobile()?28:50,smooth(range(t,.48,.86)))}%`;bridgeOrderTitle.style.transform=mobile()?'none':'translateY(-50%)';bridgeOrderTitle.style.width=mobile()?'calc(100vw - 40px)':'auto';setOpacity(bridgeOrderTitle,smooth(range(t,.36,.62)));setOpacity(locMeta,1-smooth(range(t,.34,.64)));setOpacity(routeLabel,1-smooth(range(t,.24,.58)));setOpacity(orderLinks,.68*smooth(range(t,.54,.78)));
 }
 
 let ticking=false;
