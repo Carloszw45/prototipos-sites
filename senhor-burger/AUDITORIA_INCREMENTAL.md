@@ -21,7 +21,7 @@
 | ID | Área | Problema / objetivo | Estado | Commit da correção | Validação |
 |---|---|---|---|---|---|
 | SB-001 | Hero / mobile | Confirmar densidade, entrada/saída dos textos e sobreposição com o burger nos dois sentidos do scroll. | VALIDADO | `8a1a32126e617700c8c673aa6e4f7bf5deea46ab` | 2 revisões completas de HTML/CSS/JS/integração limpas; auditoria visual 40 estados (20↓/20↑), 20/20 estados de conteúdo idênticos no reverso, 0 overlaps copy/burger |
-| SB-002 | Hero → Produtos | Validar continuidade espacial do burger e ausência de salto de escala/posição na dobra. | PENDENTE | — | — |
+| SB-002 | Hero → Produtos | Validar continuidade espacial do burger e ausência de salto de escala/posição na dobra. | VALIDADO | `a41863da45ebbbd015bf22b929bc2b15f7fad831` | cache `672ccaf29b320fbab4e47ade8a5fdc29de86b7d1`; 2 revisões completas de HTML/CSS/JS/integração limpas; 2 ciclos visuais por breakpoint; certificação final 164 estados desktop + 164 mobile, diferença direcional 0,0, sem corte de fundo e sem erro de runtime |
 | SB-003 | Produtos | Validar entrada/saída dos três estados de copy e recomposição das camadas sem disputa de transform/opacity. | PENDENTE | — | — |
 | SB-004 | Produtos → Casa | Validar escala do burger até a mesa e eliminar qualquer intervalo visual morto ou queda brusca de presença. | PENDENTE | — | — |
 | SB-005 | Casa | Validar crescimento da fotografia, legibilidade da copy e comportamento reverso sem resíduos. | PENDENTE | — | — |
