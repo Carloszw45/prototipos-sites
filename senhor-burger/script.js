@@ -19,15 +19,16 @@ const mapRect=()=>mobile()?{left:.10*innerWidth,top:.44*innerHeight,width:.92*in
 const ratingBox=()=>mobile()?{left:15,top:.42*innerHeight,width:.64*innerWidth,height:.28*innerHeight}:{left:.045*innerWidth,top:.50*innerHeight,width:.52*innerWidth,height:.48*innerHeight};
 
 const hero=$('#hero'), heroStage=$('#heroStage'), heroBurger=$('#heroBurger'), heroLayers=$$('#heroBurger .layer'), heroTitle=$('.title'), heroKicker=$('.kicker'), heroA=$('.a'), heroB=$('.b'), heroC=$('.c'), hint=$('.hint');
-const products=$('#produtos'), productsStage=$('#productsStage'), productStack=$('#productStack'), productLayers=$$('#productStack .mb'), pcs=$$('.p-copy'), productNo=$('.product-no'), menuLink=$('.menu-link');
+const products=$('#produtos'), productsStage=$('#productsStage'), productStack=$('#productStack'), productLayers=$$('#productStack .layer, #productStack .mb'), pcs=$$('.p-copy'), productNo=$('.product-no'), menuLink=$('.menu-link');
 const house=$('#casa'), houseStage=$('#houseStage'), housePhoto=$('#housePhoto'), houseWindow=$('#houseWindow'), houseCopy=$('.house-copy');
 const proof=$('#prova'), proofStage=$('#proofStage'), rating=$('#rating'), four=$('.rating .four'), comma=$('.rating .comma'), seven=$('.rating .seven'), star=$('.rating sup'), ratingSub=$('.rating-sub'), reviews=$('.reviews'), rvs=$$('.review');
 const location=$('#local'), locationStage=$('#locationStage'), routeMap=$('.route-map'), route=$('#route'), pin=$('#pin'), locTitle=$('.loc-title'), locMeta=$('.loc-meta'), routeLabel=$('.route-label');
 const order=$('#pedido'), orderStage=$('#orderStage'), orderTitle=$('.order-title'), returnBurger=$('#returnBurger'), orderLinks=$('.order-links'), ctaLine=$('.order-title a i');
 const bridgeBurger=$('#bridgeBurger'), bridgeProduct=$('#bridgeProduct'), bridgeLight=$('#bridgeLight'), bridgeStar=$('#bridgeStar'), bridgeMap=$('#bridgeMap');
 
-bridgeBurger.appendChild(heroBurger.querySelector('.burger').cloneNode(true));
-bridgeProduct.appendChild(productStack.querySelector('.mini-burger').cloneNode(true));
+const heroBurgerVisual=heroBurger.querySelector('.burger');
+bridgeBurger.appendChild(heroBurgerVisual.cloneNode(true));
+bridgeProduct.appendChild(heroBurgerVisual.cloneNode(true));
 const bridgeHouse=housePhoto.cloneNode(true);bridgeHouse.removeAttribute('id');bridgeHouse.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));bridgeHouse.classList.add('bridge');bridgeHouse.style.zIndex='46';document.querySelector('.transition-layer').appendChild(bridgeHouse);
 const bridgeRating=rating.cloneNode(true);bridgeRating.removeAttribute('id');bridgeRating.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));bridgeRating.classList.add('bridge');bridgeRating.style.zIndex='47';bridgeRating.style.color='var(--ink)';document.querySelector('.transition-layer').appendChild(bridgeRating);
 const bridgeLocTitle=locTitle.cloneNode(true);bridgeLocTitle.classList.add('bridge');bridgeLocTitle.style.zIndex='47';document.querySelector('.transition-layer').appendChild(bridgeLocTitle);
@@ -73,7 +74,7 @@ function renderProducts(p){
   pcs[0].style.transform=`translateY(${mix(0,-8,smooth(range(p,.27,.37)))}px)`;pcs[1].style.transform=`translateY(${mix(24,0,smooth(range(p,.32,.43)))}px)`;pcs[2].style.transform=`translateY(${mix(24,0,smooth(range(p,.60,.71)))}px)`;
   const drift=m?mix(0,-4,p):mix(0,-8,p),base=m?.90:1,sc=base*mix(.92,1.04,smooth(range(p,.06,.68)));
   productStack.style.right=m?'-12vw':'5vw';productStack.style.left='auto';productStack.style.top='50%';productStack.style.transform=`translateY(-50%) translate3d(${drift}vw,${mix(0,m?2:-2,p)}vh,0) scale(${sc})`;setOpacity(productStack,1);
-  const separate=smooth(range(p,.36,.47))*(1-smooth(range(p,.57,.69))),offs=[-22,-15,-9,-3,4,10,16];productLayers.forEach((el,i)=>{setOpacity(el,1);el.style.transform=`translateY(${offs[i]*separate}px)`});
+  const separate=smooth(range(p,.36,.47))*(1-smooth(range(p,.57,.69))),offs=[-24,-18,-11,-5,2,8,14,20,26];productLayers.forEach((el,i)=>{setOpacity(el,1);el.style.transform=`translateY(${(offs[i]??0)*separate}px)`});
   setOpacity(productNo,.60*(1-smooth(range(p,.82,.96))));setOpacity(menuLink,1-smooth(range(p,.82,.96)));
 }
 
@@ -107,8 +108,7 @@ function bridgeHeroProducts(e){
   const a={...rawA,y:rawA.y+innerHeight*e},b={...rawB,y:rawB.y-innerHeight*(1-e)};
   const x=mix(a.x,b.x,t),y=mix(a.y,b.y,t),w=mix(a.w,b.w,t),h=mix(a.h,b.h,t);
   heroBurger.style.visibility='hidden';productStack.style.visibility='hidden';
-  setFixedBox(bridgeBurger,x,y,w,h,1);setFixedBox(bridgeProduct,x,y,w,h,1);
-  const morph=smooth(range(t,.68,.94));setOpacity(bridgeBurger,1-morph);setOpacity(bridgeProduct,morph);
+  setFixedBox(bridgeBurger,x,y,w,h,1);setOpacity(bridgeBurger,1);
   const bg=color([12,9,7],[124,37,29],smooth(range(t,.04,.88)));heroStage.style.background=bg;productsStage.style.background=bg;
   const exit=smooth(range(t,.08,.56));heroTitle.style.opacity=String((+heroTitle.style.opacity||0)*(1-exit));heroKicker.style.opacity=String((+heroKicker.style.opacity||0)*(1-exit));[heroA,heroB,heroC].forEach(el=>setOpacity(el,(+el.style.opacity||0)*(1-exit)));
   setOpacity(pcs[0],smooth(range(t,.72,.98))*.95);
