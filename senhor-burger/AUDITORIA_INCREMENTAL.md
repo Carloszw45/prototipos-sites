@@ -34,6 +34,7 @@
 | SB-012 | Conteúdo / função | Revisar textos vagos e links ainda provisórios (`#pedido`, Instagram/Cardápio) para separar protótipo de comportamento final. | PENDENTE | — | — |
 | SB-013 | Integração | Revisar conflitos entre CSS e JS sobre `transform`, `opacity`, `background`, z-index e estados sticky/fixed. | PENDENTE | — | — |
 | SB-014 | Mobile / tablet / desktop | Auditoria comparativa de composição e transições por breakpoint; mobile não pode ser desktop reduzido. | PENDENTE | — | — |
+| SB-015 | Continuidade entre cenas / zero-jump | Auditoria global de todas as dobras: localizar clones/reparent/handoffs desnecessários, saltos de posição/escala, microtravadas e ownership duplicado. Sempre que viável, substituir troca entre elementos por objeto persistente com um único owner/timeline e exigir continuidade exata nos dois sentidos. | PENDENTE | — | — |
 
 ## Procedimento por item
 
