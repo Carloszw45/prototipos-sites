@@ -124,8 +124,8 @@ function bridgeProductsHouse(e){
   const incomingY=pc.y+innerHeight*(1-e);setFixedBox(bridgeHouse,pc.x,incomingY,hr.width,hr.height,1);
   const reveal=smoother(range(t,.12,.74)),clipTop=mix(52,0,reveal),clipSide=mix(mobile()?18:28,0,reveal),clipBottom=mix(8,0,reveal);
   bridgeHouse.style.clipPath=`inset(${clipTop}% ${clipSide}% ${clipBottom}% ${clipSide}% round 4px)`;setOpacity(bridgeHouse,smooth(range(t,.08,.60)));
-  setFixedBox(bridgeProduct,mix(a.x,target.x,move),mix(a.y,target.y,move),mix(a.w,target.w,size),mix(a.h,target.h,size),1);setOpacity(bridgeProduct,1-smooth(range(t,.90,1)));
-  setOpacity(houseCopy,smooth(range(t,.72,.96))*.92);
+  setFixedBox(bridgeProduct,mix(a.x,target.x,move),mix(a.y,target.y,move),mix(a.w,target.w,size),mix(a.h,target.h,size),1);
+  const fadeStart=mobile()?.92:.88;setOpacity(bridgeProduct,1-smooth(range(e,fadeStart,.995)));
 }
 
 function bridgeHouseProof(e){
