@@ -69,13 +69,18 @@ function renderHero(p){
 }
 
 function renderProducts(p){
-  const m=mobile(),s1=1-smooth(range(p,.27,.37)),s2=smooth(range(p,.32,.43))*(1-smooth(range(p,.54,.64))),s3=smooth(range(p,.60,.71))*(1-smooth(range(p,.80,.90)));
+  const m=mobile();
+  const s1=(1-smooth(range(p,.25,.35))),s2=smooth(range(p,.31,.41))*(1-smooth(range(p,.53,.63))),s3=smooth(range(p,.59,.69))*(1-smooth(range(p,.84,.93)));
   setOpacity(pcs[0],s1);setOpacity(pcs[1],s2);setOpacity(pcs[2],s3);
-  pcs[0].style.transform=`translateY(${mix(0,-8,smooth(range(p,.27,.37)))}px)`;pcs[1].style.transform=`translateY(${mix(24,0,smooth(range(p,.32,.43)))}px)`;pcs[2].style.transform=`translateY(${mix(24,0,smooth(range(p,.60,.71)))}px)`;
-  const drift=m?mix(0,-4,p):mix(0,-8,p),base=m?.90:1,sc=base*mix(.92,1.04,smooth(range(p,.06,.68)));
-  productStack.style.right=m?'-12vw':'5vw';productStack.style.left='auto';productStack.style.top='50%';productStack.style.transform=`translateY(-50%) translate3d(${drift}vw,${mix(0,m?2:-2,p)}vh,0) scale(${sc})`;setOpacity(productStack,1);
-  const separate=smooth(range(p,.36,.47))*(1-smooth(range(p,.57,.69))),offs=[-24,-18,-11,-5,2,8,14,20,26];productLayers.forEach((el,i)=>{setOpacity(el,1);el.style.transform=`translateY(${(offs[i]??0)*separate}px)`});
-  setOpacity(productNo,.60*(1-smooth(range(p,.82,.96))));setOpacity(menuLink,1-smooth(range(p,.82,.96)));
+  const in2=smooth(range(p,.31,.41)),out1=smooth(range(p,.25,.35)),in3=smooth(range(p,.59,.69)),copyLift=m?-.03*innerHeight:0;
+  pcs[0].style.transform=`translate3d(0,${copyLift+mix(0,-18,out1)}px,0)`;
+  pcs[1].style.transform=`translate3d(0,${copyLift+mix(20,0,in2)-mix(0,14,smooth(range(p,.53,.63)))}px,0)`;
+  pcs[2].style.transform=`translate3d(0,${copyLift+mix(22,0,in3)}px,0)`;
+  const drift=m?mix(0,-1.5,smooth(range(p,.08,.82))):mix(0,-2.5,smooth(range(p,.08,.82))),base=m?.86:1,sc=base*mix(.96,1.02,smooth(range(p,.08,.72)));
+  productStack.style.right=m?'-9vw':'5vw';productStack.style.left='auto';productStack.style.top=m?'72%':'50%';productStack.style.transform=`translateY(-50%) translate3d(${drift}vw,${mix(0,m?1:-1,p)}vh,0) scale(${sc})`;setOpacity(productStack,1);
+  const separate=smooth(range(p,.37,.49))*(1-smooth(range(p,.56,.69))),baseOff=[-24,-18,-11,-5,2,8,14,20,26],amp=m?.58:1;
+  productLayers.forEach((el,i)=>{setOpacity(el,1);el.style.transform=`translate3d(0,${(baseOff[i]??0)*amp*separate}px,0)`});
+  setOpacity(productNo,.60*(1-smooth(range(p,.84,.96))));setOpacity(menuLink,1-smooth(range(p,.84,.96)));
 }
 
 function renderHouse(p){
