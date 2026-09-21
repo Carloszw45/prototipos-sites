@@ -4,7 +4,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const clamp=v=>Math.max(0,Math.min(1,v));
 const range=(v,a,b)=>clamp((v-a)/(b-a));
 const mix=(a,b,t)=>a+(b-a)*t;
-const smooth=t=>t*t(3-2*t);
+const smooth=t=>t*t*(3-2*t);
 const smoother=t=>t*t*t*(t*(t*6-15)+10);
 const progress=el=>{const r=el.getBoundingClientRect(),d=el.offsetHeight-innerHeight;return d<=0?0:clamp(-r.top/d)};
 const entering=el=>clamp((innerHeight-el.getBoundingClientRect().top)/innerHeight);
