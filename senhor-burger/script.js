@@ -47,13 +47,24 @@ function resetFrame(){
 
 function renderHero(p){
   const m=mobile(),intro=smooth(range(p,0,.11)),move=smooth(range(p,.12,.28)),split=smooth(range(p,.28,.49)),detail=smooth(range(p,.50,.65)),join=smooth(range(p,.65,.79));
-  const x=m?mix(0,-3,move):mix(0,18,move),y=m?mix(4,-6,move):mix(3,-7,move);
-  const sc=mix(.72,1,intro)*mix(1,m?1.13:1.25,detail*(1-join));
+  const x=m?mix(0,-1,move):mix(0,18,move),y=m?mix(5,-2,move):mix(3,-7,move);
+  const sc=mix(.72,1,intro)*mix(1,m?1.06:1.25,detail*(1-join));
   setOpacity(heroBurger,intro);heroBurger.style.transform=`translate3d(calc(-50% + ${x}vw),calc(-50% + ${y}vh),0) scale(${sc})`;
-  const sep=split*(1-join);heroLayers.forEach((el,i)=>{const xx=sep*(m?.13:(i%2?.26:-.19))*Math.abs(heroOff[i]),yy=sep*heroOff[i]*(m?.58:.54),rot=sep*((i-4)*(m?.20:.34));el.style.transform=`translate3d(${xx}px,${yy}px,0) rotate(${rot}deg)`});
-  const ai=smooth(range(p,.10,.18))*(1-smooth(range(p,.26,.34))), bi=smooth(range(p,.31,.39))*(1-smooth(range(p,.47,.55))), ci=smooth(range(p,.52,.60))*(1-smooth(range(p,.68,.76)));
-  setOpacity(heroA,ai);setOpacity(heroB,bi);setOpacity(heroC,ci);heroA.style.transform=`translateY(${mix(24,0,ai)}px)`;heroB.style.transform=`translateY(${mix(24,0,bi)}px)`;heroC.style.transform=`translateY(${mix(24,0,ci)}px)`;
-  setOpacity(hint,1-smooth(range(p,.03,.14)));heroTitle.style.opacity=String(mix(.95,.42,smooth(range(p,.72,.94))));heroKicker.style.opacity=String(1-smooth(range(p,.76,.95)));
+  const sep=split*(1-join);heroLayers.forEach((el,i)=>{const xx=sep*(m?.09:(i%2?.26:-.19))*Math.abs(heroOff[i]),yy=sep*heroOff[i]*(m?.48:.54),rot=sep*((i-4)*(m?.14:.34));el.style.transform=`translate3d(${xx}px,${yy}px,0) rotate(${rot}deg)`});
+  const ai=m?smooth(range(p,.12,.18))*(1-smooth(range(p,.24,.30))):smooth(range(p,.10,.18))*(1-smooth(range(p,.26,.34)));
+  const bi=m?smooth(range(p,.32,.38))*(1-smooth(range(p,.46,.52))):smooth(range(p,.31,.39))*(1-smooth(range(p,.47,.55)));
+  const ci=m?smooth(range(p,.54,.60))*(1-smooth(range(p,.68,.74))):smooth(range(p,.52,.60))*(1-smooth(range(p,.68,.76)));
+  setOpacity(heroA,ai);setOpacity(heroB,bi);setOpacity(heroC,ci);
+  const lift=m?16:24;heroA.style.transform=`translateY(${mix(lift,0,ai)}px)`;heroB.style.transform=`translateY(${mix(lift,0,bi)}px)`;heroC.style.transform=`translateY(${mix(lift,0,ci)}px)`;
+  setOpacity(hint,1-smooth(range(p,.02,m?.10:.14)));
+  if(m){
+    const dim=smooth(range(p,.08,.18)),exit=smooth(range(p,.72,.94));
+    heroTitle.style.opacity=String(mix(mix(.92,.28,dim),.16,exit));
+    heroKicker.style.opacity=String(1-smooth(range(p,.06,.16)));
+  }else{
+    heroTitle.style.opacity=String(mix(.95,.42,smooth(range(p,.72,.94))));
+    heroKicker.style.opacity=String(1-smooth(range(p,.76,.95)));
+  }
 }
 
 function renderProducts(p){
