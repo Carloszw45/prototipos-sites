@@ -131,8 +131,10 @@ function bridgeProductsHouse(e){
 function bridgeHouseProof(e){
   if(e<=0||e>=1)return;
   const t=smoother(e),hr=houseRect(),c={x:hr.left+hr.width/2,y:hr.top+hr.height/2};
-  housePhoto.style.visibility='hidden';rating.style.visibility='hidden';setFixedBox(bridgeHouse,mix(c.x,innerWidth/2,t),mix(c.y,innerHeight/2,t),mix(hr.width,innerWidth,t),mix(hr.height,innerHeight,t),1);setOpacity(bridgeHouse,1-smooth(range(t,.88,1)));bridgeHouse.style.filter=`saturate(${mix(1,.66,t)}) brightness(${mix(1,1.13,t)})`;
-  bridgeLight.style.background=`rgba(234,223,206,${smooth(range(t,.38,1))*.95})`;setOpacity(bridgeLight,smooth(range(t,.32,.98)));
+  housePhoto.style.visibility='hidden';rating.style.visibility='hidden';
+  const bg=color([40,26,18],[234,223,206],smooth(range(t,.24,.90)));houseStage.style.background=bg;
+  setFixedBox(bridgeHouse,mix(c.x,innerWidth/2,t),mix(c.y,innerHeight/2,t),mix(hr.width,innerWidth,t),mix(hr.height,innerHeight,t),1);setOpacity(bridgeHouse,1-smooth(range(t,.72,.94)));bridgeHouse.style.filter=`saturate(${mix(1,.66,t)}) brightness(${mix(1,1.13,t)})`;
+  const lightIn=smooth(range(t,.30,.72)),lightOut=1-smooth(range(t,.90,.99));bridgeLight.style.background='rgba(234,223,206,.82)';setOpacity(bridgeLight,lightIn*lightOut);
   const rb=ratingBox();bridgeRating.style.left=`${rb.left}px`;bridgeRating.style.top=`${rb.top}px`;bridgeRating.style.width=`${rb.width}px`;bridgeRating.style.height=`${rb.height}px`;bridgeRating.style.transform='translateY(-50%)';bridgeRating.style.fontSize=getComputedStyle(rating).fontSize;bridgeRating.style.color='var(--ink)';setOpacity(bridgeRating,smooth(range(t,.68,.95)));setOpacity(ratingSub,smooth(range(t,.60,.92)));
 }
 
