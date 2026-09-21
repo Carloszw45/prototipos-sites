@@ -4,7 +4,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const clamp=v=>Math.max(0,Math.min(1,v));
 const range=(v,a,b)=>clamp((v-a)/(b-a));
 const mix=(a,b,t)=>a+(b-a)*t;
-const smooth=t=>t*t*(3-2*t);
+const smooth=t=>t*t(3-2*t);
 const smoother=t=>t*t*t*(t*(t*6-15)+10);
 const progress=el=>{const r=el.getBoundingClientRect(),d=el.offsetHeight-innerHeight;return d<=0?0:clamp(-r.top/d)};
 const entering=el=>clamp((innerHeight-el.getBoundingClientRect().top)/innerHeight);
@@ -151,12 +151,12 @@ function bridgeProofLocation(e){
 
 function bridgeLocationOrder(e){
   if(e<=0||e>=1)return;
-  const t=smoother(e),mr=mapRect();routeMap.style.visibility='hidden';locTitle.style.visibility='hidden';orderTitle.style.visibility='hidden';
+  const t=smoother(e),mr=mapRect(),bg=color([21,17,15],[142,33,27],smooth(range(t,.06,.96)));routeMap.style.visibility='hidden';locTitle.style.visibility='hidden';orderTitle.style.visibility='hidden';
+  locationStage.style.background=bg;orderStage.style.background=bg;bridgeLight.style.background=bg;setOpacity(bridgeLight,1);
   bridgeMap.style.left=`${mr.left}px`;bridgeMap.style.top=`${mr.top}px`;bridgeMap.style.width=`${mr.width}px`;bridgeMap.style.height=`${mr.height}px`;bridgeMap.style.transform=`translate3d(${mix(0,-innerWidth*.010,t)}px,${mix(0,-innerHeight*.010,t)}px,0) scale(${mix(1,.99,t)})`;setOpacity(bridgeMap,.84*(1-smooth(range(t,.44,.86))));
   if(bridgeMapRoute){bridgeMapRoute.style.strokeDashoffset='0';bridgeMapRoute.style.strokeWidth='5';}if(bridgeMapPin){bridgeMapPin.style.transform='scale(1)';setOpacity(bridgeMapPin,1);}
-  bridgeLight.style.background=color([21,17,15],[142,33,27],t);setOpacity(bridgeLight,smooth(range(t,.02,.98)));
-  bridgeLocTitle.style.position='fixed';bridgeLocTitle.style.left=mobile()?'20px':'6vw';bridgeLocTitle.style.top=`${mix(mobile()?30:50,mobile()?22:38,smooth(range(t,.28,.72)))}%`;bridgeLocTitle.style.transform='translateY(-50%)';bridgeLocTitle.style.fontSize=getComputedStyle(locTitle).fontSize;setOpacity(bridgeLocTitle,1-smooth(range(t,.30,.58)));
-  bridgeOrderTitle.style.position='fixed';bridgeOrderTitle.style.left=mobile()?'20px':'6vw';bridgeOrderTitle.style.top=`${mix(mobile()?36:62,mobile()?28:50,smooth(range(t,.48,.86)))}%`;bridgeOrderTitle.style.transform=mobile()?'none':'translateY(-50%)';bridgeOrderTitle.style.width=mobile()?'calc(100vw - 40px)':'auto';setOpacity(bridgeOrderTitle,smooth(range(t,.36,.62)));setOpacity(locMeta,1-smooth(range(t,.34,.64)));setOpacity(routeLabel,1-smooth(range(t,.24,.58)));setOpacity(orderLinks,.68*smooth(range(t,.54,.78)));
+  bridgeLocTitle.style.position='fixed';bridgeLocTitle.style.left=mobile()?'20px':'6vw';bridgeLocTitle.style.top=`${mix(mobile()?30:50,mobile()?22:38,smooth(range(t,.20,.46)))}%`;bridgeLocTitle.style.transform='translateY(-50%)';bridgeLocTitle.style.fontSize=getComputedStyle(locTitle).fontSize;setOpacity(bridgeLocTitle,1-smooth(range(t,.20,.46)));
+  bridgeOrderTitle.style.position='fixed';bridgeOrderTitle.style.left=mobile()?'20px':'6vw';bridgeOrderTitle.style.top=`${mix(mobile()?36:62,mobile()?28:50,smooth(range(t,.50,.78)))}%`;bridgeOrderTitle.style.transform=mobile()?'none':'translateY(-50%)';bridgeOrderTitle.style.width=mobile()?'calc(100vw - 40px)':'auto';setOpacity(bridgeOrderTitle,smooth(range(t,.50,.72)));setOpacity(locMeta,1-smooth(range(t,.30,.52)));setOpacity(routeLabel,1-smooth(range(t,.22,.44)));setOpacity(orderLinks,.68*smooth(range(t,.60,.80)));
 }
 
 let ticking=false;
