@@ -20,7 +20,7 @@
 
 | ID | Área | Problema / objetivo | Estado | Commit da correção | Validação |
 |---|---|---|---|---|---|
-| SB-001 | Hero / mobile | Confirmar densidade, entrada/saída dos textos e sobreposição com o burger nos dois sentidos do scroll. | EM_CORRECAO | — | — |
+| SB-001 | Hero / mobile | Confirmar densidade, entrada/saída dos textos e sobreposição com o burger nos dois sentidos do scroll. | PUBLICADO | `0bd1a665743ddde6eecdca4237f9a12885cd8a98` | revisão 1 pendente |
 | SB-002 | Hero → Produtos | Validar continuidade espacial do burger e ausência de salto de escala/posição na dobra. | PENDENTE | — | — |
 | SB-003 | Produtos | Validar entrada/saída dos três estados de copy e recomposição das camadas sem disputa de transform/opacity. | PENDENTE | — | — |
 | SB-004 | Produtos → Casa | Validar escala do burger até a mesa e eliminar qualquer intervalo visual morto ou queda brusca de presença. | PENDENTE | — | — |
