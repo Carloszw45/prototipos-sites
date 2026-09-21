@@ -1,28 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0c0907">
-<title>Senhor Burger — carregando v0.8</title>
-<style>html,body{margin:0;min-height:100%;background:#0c0907;color:#efe3d2;font-family:Arial,Helvetica,sans-serif}body{display:grid;place-items:center}.loading{font-size:10px;letter-spacing:.18em;opacity:.55}</style>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#0c0907" name="theme-color"/>
+<title>Senhor Burger — Protótipo v0.9</title>
+
+<link href="style.css?v=09" rel="stylesheet"/><script defer="" src="script.js?v=09"></script></head>
 <body>
-<div class="loading">CARREGANDO PROTÓTIPO…</div>
-<script>
-(async()=>{
-  try{
-    const res=await fetch('./v3base.html?v=08',{cache:'no-store'});
-    if(!res.ok) throw new Error('base');
-    let html=await res.text();
-    html=html.replace('</body>','<script src="./transitions-v07.js?v=08"><\/script></body>');
-    document.open();
-    document.write(html);
-    document.close();
-  }catch(e){
-    document.body.innerHTML='<div class="loading">NÃO FOI POSSÍVEL CARREGAR O PROTÓTIPO.</div>';
-  }
-})();
-</script>
+<header class="header"><a class="brand" href="#hero"><span class="mark">SB</span><span>SENHOR BURGER</span></a><nav class="nav"><a href="#produtos">Produtos</a><a href="#casa">A casa</a><a href="#pedido">Pedir agora</a></nav></header>
+<main>
+<section class="scene hero" id="hero"><div class="sticky hero-stage" id="heroStage"><div class="grain"></div><div class="title"><span>SENHOR</span><span>BURGER</span></div><div class="kicker">HAMBÚRGUER ARTESANAL • NOVA CONTAGEM</div><div class="copy a"><p>Grande no sabor.<br/>Maior na presença.</p></div><div class="copy b"><small>ELOGIADO POR QUEM PROVA</small><p>Bem preparado.<br/>Ingredientes de qualidade.</p></div><div class="copy c"><small>PORÇÃO E PRESENÇA</small><p>Generoso na mesa.<br/>Marcante no primeiro olhar.</p></div><div class="burger-wrap" id="heroBurger"><div class="shadow"></div><div class="burger"><div class="layer bun top"></div><div class="layer lettuce l1"></div><div class="layer tomato"></div><div class="layer cheese ch1"></div><div class="layer patty p1"></div><div class="layer cheese ch2"></div><div class="layer patty p2"></div><div class="layer lettuce l2"></div><div class="layer bun bottom"></div></div></div><div class="hint"><span>ROLE PARA EXPLORAR</span><i></i></div></div></section>
+<section class="scene products" id="produtos"><div class="sticky products-stage" id="productsStage"><div class="grain"></div><div class="index">02 / O BURGER</div><div class="product-copy"><div class="p-copy pc1"><div class="eyebrow">ARTESANAL</div><h2>Feito para<br/>ocupar a mesa.</h2><p>Sabor, preparo e ingredientes de qualidade aparecem entre os elogios de quem já provou.</p></div><div class="p-copy pc2"><div class="eyebrow">GENEROSIDADE</div><h2>Sabor que<br/>não passa despercebido.</h2><p>Porções generosas aparecem entre os destaques de clientes do Senhor Burger.</p></div><div class="p-copy pc3"><div class="eyebrow">ESCOLHA O SEU</div><h2>Do desejo<br/>para o pedido.</h2><p>Veja o cardápio completo e escolha o que vai chegar à sua mesa.</p></div></div><div class="product-stack" id="productStack"><div class="mini-burger"><div class="mb topbun"></div><div class="mb green"></div><div class="mb red"></div><div class="mb yellow"></div><div class="mb meat"></div><div class="mb green two"></div><div class="mb botbun"></div></div><div class="product-no">CARDÁPIO ARTESANAL</div></div><a class="menu-link" href="#pedido">VER CARDÁPIO COMPLETO</a></div></section>
+<section class="scene house" id="casa"><div class="sticky house-stage" id="houseStage"><div class="index">03 / A CASA</div><div class="house-photo" id="housePhoto"><div class="window" id="houseWindow"><div class="window-light"></div></div><div class="lamp"></div><div class="table"></div><div class="people"><i></i><i></i><i></i></div></div><div class="house-copy"><div class="eyebrow">A EXPERIÊNCIA CONTINUA</div><h2>Tem burger.<br/>Tem mesa.<br/>Tem encontro.</h2><p>Um ambiente acolhedor e confortável, elogiado por famílias e por quem escolhe a casa para encontros e datas especiais.</p></div></div></section>
+<section class="scene proof" id="prova"><div class="sticky proof-stage" id="proofStage"><div class="index">04 / QUEM VEM, APROVA</div><div class="rating" id="rating"><span class="four">4</span><span class="comma">,</span><span class="seven">7</span><sup>★</sup></div><div class="rating-sub">1.276 AVALIAÇÕES NO GOOGLE</div><div class="reviews"><div class="review rv1"><p>“Hambúrguer incrível, saboroso e bem preparado.”</p><small>ALINNE GOMES • GOOGLE</small></div><div class="review rv2"><p>“Espaço bonito, aconchegante e confortável.”</p><small>ISAQUE PRIDE • GOOGLE</small></div></div></div></section>
+<section class="scene location" id="local"><div class="sticky location-stage" id="locationStage"><div class="index">05 / AQUI É O LUGAR</div><div class="loc-title"><span>NOVA</span><span>CONTAGEM</span></div><svg aria-hidden="true" class="route-map" viewbox="0 0 700 540"><g class="grid"><path d="M0 90H700M0 180H700M0 270H700M0 360H700M0 450H700M115 0V540M230 0V540M345 0V540M460 0V540M575 0V540"></path></g><path class="route" d="M38 450 C120 400 145 410 190 340 S265 230 345 250 S410 350 468 305 S540 195 655 148" id="route"></path><circle class="pin" cx="655" cy="148" id="pin" r="13"></circle></svg><div class="loc-meta"><span>R. VP-1, 2454</span><span>NOVA CONTAGEM • CONTAGEM/MG</span></div><div class="route-label"><strong>COMO CHEGAR</strong><span>Abra a rota e venha até a casa.</span></div></div></section>
+<section class="scene order" id="pedido"><div class="sticky order-stage" id="orderStage"><div class="grain"></div><div class="index">06 / SEU PEDIDO</div><div class="order-title"><div class="eyebrow">DO CARDÁPIO PARA A MESA</div><h2>ESCOLHA<br/>O SEU.</h2><a href="#pedido"><span>PEDIR AGORA</span><i></i></a></div><div class="return-burger" id="returnBurger"><div class="burger"><div class="layer bun top"></div><div class="layer lettuce l1"></div><div class="layer tomato"></div><div class="layer cheese ch1"></div><div class="layer patty p1"></div><div class="layer cheese ch2"></div><div class="layer patty p2"></div><div class="layer lettuce l2"></div><div class="layer bun bottom"></div></div></div><div class="order-links"><a href="#pedido">Instagram</a><a href="#local">Como chegar</a><a href="#produtos">Cardápio</a></div></div></section>
+<footer class="footer"><div><strong>SENHOR BURGER</strong><span>R. VP-1, 2454 • NOVA CONTAGEM</span></div><div><span>(31) 97566-7577</span><span>Contagem • MG</span></div></footer>
+</main>
+
 </body>
 </html>
