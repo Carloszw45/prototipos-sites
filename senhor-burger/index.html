@@ -15,7 +15,7 @@
     const res=await fetch('./v3base.html?v=05',{cache:'no-store'});
     if(!res.ok) throw new Error('base');
     let html=await res.text();
-    html=html.replace('</body>','<script src="./transitions-v05.js?v=05"><\\/script></body>');
+    html=html.replace('</body>','<script src="./transitions-v05.js?v=05"><\/script></body>');
     document.open();
     document.write(html);
     document.close();
