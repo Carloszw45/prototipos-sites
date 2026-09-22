@@ -59,7 +59,7 @@ function colorTimeline(y){
     const [a,b,c0,c1]=spans[i];
     if(y>=a&&y<=b)return rgb(c0,c1,smooth(range(y,a,b)));
     if(y>b)c=c1;
-    if(i<spans.length-1&&y>b&&y<spans[i+1][0])return rgb(c,c,0);
+    if(i<spans.length-1&&y> b && y<spans[i+1][0])return rgb(c,c,0);
   }
   return rgb(order,order,0);
 }
