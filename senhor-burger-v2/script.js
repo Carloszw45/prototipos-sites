@@ -87,10 +87,10 @@ function burgerState(y){
     {y:pos('desire',.62),x:69,yv:58,s:1.02,o:1},
     {y:pos('desire',1),x:56,yv:72,s:.62,o:1},
     {y:pos('house',0),x:56,yv:72,s:.62,o:1},
-    {y:pos('house',.32),x:48,yv:73,s:.52,o:1},
-    {y:pos('house',.67),x:46,yv:73,s:.49,o:1},
-    {y:pos('house',.82),x:46,yv:73,s:.49,o:0},
-    {y:pos('order',1),x:46,yv:73,s:.49,o:0}
+    {y:pos('house',.32),x:43,yv:73,s:.48,o:1},
+    {y:pos('house',.67),x:41,yv:73,s:.45,o:1},
+    {y:pos('house',.82),x:41,yv:73,s:.45,o:0},
+    {y:pos('order',1),x:41,yv:73,s:.45,o:0}
   ];
   const raw=sample(frames,y);return{x:raw.x,y:raw.yv,s:raw.s,o:raw.o,r:0};
 }
