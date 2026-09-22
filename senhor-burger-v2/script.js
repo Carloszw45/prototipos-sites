@@ -75,8 +75,8 @@ function burgerState(y){
     {y:pos('desire',1),x:50,yv:72,s:.62,o:1},
     {y:pos('house',0),x:50,yv:72,s:.62,o:1},
     {y:pos('house',.32),x:49,yv:73,s:.54,o:1},
-    {y:pos('house',.67),x:48,yv:73,s:.50,o:1},
-    {y:pos('house',.82),x:48,yv:73,s:.50,o:0},
+    {y:pos('house',.46),x:48,yv:73,s:.50,o:1},
+    {y:pos('house',.58),x:48,yv:73,s:.50,o:0},
     {y:pos('order',1),x:48,yv:73,s:.50,o:0}
   ]:[
     {y:pos('presence',0),x:50,yv:57,s:.68,o:0},
@@ -97,9 +97,9 @@ function burgerState(y){
 function receiptState(y){
   const m=mobile();
   const frames=m?[
-    {y:pos('house',.72),x:61,yv:71,s:.46,o:0,r:-2},
-    {y:pos('house',.86),x:61,yv:71,s:.56,o:1,r:-2},
-    {y:pos('house',.94),x:58,yv:68,s:.62,o:1,r:-1.2},
+    {y:pos('house',.82),x:61,yv:71,s:.46,o:0,r:-2},
+    {y:pos('house',.92),x:61,yv:71,s:.56,o:1,r:-2},
+    {y:pos('house',.98),x:58,yv:68,s:.62,o:1,r:-1.2},
     {y:pos('proof',0),x:58,yv:68,s:.62,o:1,r:-1.2},
     {y:pos('proof',.34),x:50,yv:53,s:.92,o:1,r:-.5},
     {y:pos('proof',.72),x:50,yv:53,s:.92,o:1,r:-.5},
@@ -159,7 +159,7 @@ function render(){
   setOpacity(dcc,bump(dp,.62,.71,.83,.92));
   setOpacity(houseFrame,smooth(range(ap,.05,.24))*(1-smooth(range(ap,.78,.96))));
   houseFrame.style.transform=`scale(${mix(.96,1,smooth(range(ap,.05,.28)))})`;
-  setOpacity(houseCopy,bump(ap,.25,.38,.60,.74));
+  setOpacity(houseCopy,mobile()?bump(ap,.60,.68,.72,.80):bump(ap,.25,.38,.60,.74));
   setOpacity(proofNote,bump(pp,.24,.38,.70,.84));
   setOpacity(proofSide,bump(pp,.42,.55,.76,.90));
   setOpacity(locationTitle,smooth(range(lp,.08,.20)));
