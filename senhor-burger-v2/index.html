@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c0907">
+<title>Senhor Burger — Protótipo V2</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="ambient" id="ambient"></div>
+<div class="grain" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="brand" href="#presenca"><span class="mark">SB</span><span>SENHOR BURGER</span></a>
+  <span class="lab">RASCUNHO V2</span>
+</header>
+
+<div class="continuity-layer" aria-hidden="true">
+  <div class="master-burger" id="masterBurger">
+    <div class="burger-shadow"></div>
+    <div class="burger">
+      <i class="layer bun top" data-i="0"></i>
+      <i class="layer lettuce l1" data-i="1"></i>
+      <i class="layer tomato" data-i="2"></i>
+      <i class="layer cheese ch1" data-i="3"></i>
+      <i class="layer patty p1" data-i="4"></i>
+      <i class="layer cheese ch2" data-i="5"></i>
+      <i class="layer patty p2" data-i="6"></i>
+      <i class="layer lettuce l2" data-i="7"></i>
+      <i class="layer bun bottom" data-i="8"></i>
+    </div>
+  </div>
+
+  <div class="receipt" id="receipt">
+    <div class="receipt-head"><span>SENHOR BURGER</span><b>4,7 ★</b></div>
+    <div class="receipt-rule"></div>
+    <div class="receipt-copy">“Hambúrguer incrível, saboroso e bem preparado.”</div>
+    <div class="receipt-small">1.276 avaliações no Google</div>
+    <div class="receipt-address"><span class="pin-slot"></span>R. VP-1, 2454 • NOVA CONTAGEM</div>
+  </div>
+
+  <div class="continuity-pin" id="continuityPin"><span></span></div>
+</div>
+
+<main>
+<section class="scene scene-presence" id="presenca">
+  <div class="sticky stage presence-stage">
+    <div class="scene-index">01 / PRESENÇA</div>
+    <div class="presence-title"><span>SENHOR</span><span>BURGER</span></div>
+    <div class="presence-copy pc-a">Grande no sabor.<br>Maior na presença.</div>
+    <div class="presence-copy pc-b"><small>SEM PRESSA</small>Feito para ocupar<br>a mesa e a memória.</div>
+    <div class="scroll-cue">ROLE PARA EXPLORAR <i></i></div>
+  </div>
+</section>
+
+<section class="scene scene-desire" id="desejo">
+  <div class="sticky stage desire-stage">
+    <div class="scene-index">02 / DESEJO</div>
+    <div class="desire-copy dc-a"><small>ARTESANAL</small><h2>O detalhe<br>faz presença.</h2></div>
+    <div class="desire-copy dc-b"><small>GENEROSIDADE</small><h2>Camada por<br>camada.</h2></div>
+    <div class="desire-copy dc-c"><small>SEM TROCAR DE PRODUTO</small><h2>O mesmo burger.<br>Outro ponto de vista.</h2></div>
+  </div>
+</section>
+
+<section class="scene scene-house" id="casa">
+  <div class="sticky stage house-stage">
+    <div class="scene-index">03 / A CASA</div>
+    <div class="house-frame">
+      <div class="lamp"></div>
+      <div class="window"></div>
+      <div class="people"><i></i><i></i><i></i></div>
+      <div class="table-plane"></div>
+    </div>
+    <div class="house-copy"><small>DA CHAPA PARA A MESA</small><h2>Tem burger.<br>Tem mesa.<br>Tem encontro.</h2><p>O produto chega primeiro. O ambiente aparece em volta dele.</p></div>
+  </div>
+</section>
+
+<section class="scene scene-proof" id="prova">
+  <div class="sticky stage proof-stage">
+    <div class="scene-index">04 / PROVA</div>
+    <div class="proof-note"><span>PROVA SOCIAL</span><p>A confiança nasce de algo que já estava sobre a mesa.</p></div>
+    <div class="proof-side"><strong>1.276</strong><span>avaliações<br>no Google</span></div>
+  </div>
+</section>
+
+<section class="scene scene-location" id="localizacao">
+  <div class="sticky stage location-stage">
+    <div class="scene-index">05 / AQUI É O LUGAR</div>
+    <div class="location-title"><span>NOVA</span><span>CONTAGEM</span></div>
+    <svg class="map" viewBox="0 0 700 520" aria-hidden="true">
+      <g class="grid"><path d="M0 85H700M0 170H700M0 255H700M0 340H700M0 425H700M115 0V520M230 0V520M345 0V520M460 0V520M575 0V520"></path></g>
+      <path class="route" id="route" d="M38 432 C128 390 156 401 205 332 S285 224 360 246 S432 342 492 296 S566 188 652 142"></path>
+    </svg>
+    <div class="location-meta"><span>R. VP-1, 2454</span><span>NOVA CONTAGEM • CONTAGEM/MG</span></div>
+  </div>
+</section>
+
+<section class="scene scene-order" id="pedido">
+  <div class="sticky stage order-stage">
+    <div class="scene-index">06 / PEDIDO</div>
+    <div class="order-copy"><small>DO DESEJO PARA O PEDIDO</small><h2>ESCOLHA<br>O SEU.</h2><a href="https://senhorburgercontagem.menudino.com" target="_blank" rel="noopener noreferrer"><span>PEDIR AGORA</span><i></i></a></div>
+    <div class="order-echo">SENHOR<br>BURGER</div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><strong>SENHOR BURGER</strong><span>Protótipo de experiência V2 • sem assets finais</span></footer>
+</body>
+</html>
