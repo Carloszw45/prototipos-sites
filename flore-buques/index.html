@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#a041e7">
+  <meta name="description" content="Florê Buquês. Flores para transformar pequenos gestos em grandes sentimentos. Conheça nosso catálogo de apresentação.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:title" content="Florê Buquês — um carinho que floresce">
+  <meta property="og:description" content="Conheça a nossa coleção de buquês. Catálogo de apresentação.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://carloszw45.github.io/prototipos-sites/flore-buques/assets/jardim-lilas.webp">
+  <title>Florê Buquês — um carinho que floresce</title>
+  <link rel="icon" href="./assets/flore.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./store.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalogo">Ir para os buquês</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" data-view="home" aria-label="Florê Buquês, início">
+        <img src="./assets/flore.svg" width="42" height="42" alt="">
+        <span>florê<span class="brand-subtitle">BUQUÊS & AFETO</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <button class="nav-link is-active" data-view="home">Início</button>
+        <button class="nav-link" data-view="catalog">Buquês</button>
+        <button class="nav-link" data-view="favorites">Meus favoritos</button>
+        <button class="nav-link" data-action="about">Sobre a Florê</button>
+      </nav>
+      <button class="header-cart icon-button" data-action="cart" aria-label="Abrir sacola">
+        <span data-icon="bag"></span><span class="desktop-cart-text">Minha sacola</span>
+        <span class="cart-count" data-cart-count hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="storefront" id="inicio">
+    <div class="welcome-line"><span>Um carinho que floresce.</span><span class="demo-tag">Apresentação</span></div>
+    <div class="search-row" role="search">
+      <label class="search-field"><span data-icon="search"></span><input id="search" type="search" placeholder="Busque flores, buquês, sentimentos..." aria-label="Buscar buquês" autocomplete="off"><kbd>⌘ K</kbd></label>
+      <button class="filter-button icon-button" data-action="filters" aria-label="Filtrar e ordenar buquês"><span data-icon="sliders"></span></button>
+    </div>
+
+    <section class="categories-section home-section" aria-labelledby="categories-title">
+      <div class="section-heading"><h2 id="categories-title">Categorias</h2><button class="text-link" data-action="all">Ver todas <span aria-hidden="true">↗</span></button></div>
+      <div class="category-track" id="categories"></div>
+    </section>
+
+    <section class="special-section home-section" aria-labelledby="special-title">
+      <div class="section-heading"><h2 id="special-title">Seleções especiais</h2><span class="heading-note">Para dizer com flores</span></div>
+      <div class="special-track" id="specials"></div>
+    </section>
+
+    <section class="catalog-section" id="catalogo" aria-labelledby="catalog-title">
+      <div class="section-heading catalog-heading"><div><h1 id="catalog-title">Os queridinhos</h1><p id="catalog-caption">Um buquê para cada sentimento.</p></div><button class="text-link" data-action="all" id="show-all">Ver todos <span aria-hidden="true">↗</span></button></div>
+      <div class="active-filters" id="active-filters" hidden></div>
+      <div class="product-grid" id="products"></div>
+      <div class="empty-state" id="no-products" hidden><span data-icon="flower"></span><h3>Nenhum buquê por aqui.</h3><p id="empty-description">Experimente buscar por outra flor.</p><button class="primary-button" data-action="all">Explorar todos os buquês</button></div>
+    </section>
+
+    <section class="custom-banner home-section" aria-labelledby="custom-title">
+      <div class="custom-copy"><span class="eyebrow">DO SEU JEITINHO</span><h2 id="custom-title">Cada afeto tem<br>o seu buquê.</h2><p>Escolha as flores que combinam<br>com a sua forma de sentir.</p><button class="banner-link" data-action="all">Encontre o seu <span aria-hidden="true">↗</span></button></div>
+      <img src="./assets/doce-encanto.webp" alt="Buquê delicado com rosas cor-de-rosa e flores brancas" width="368" height="460" loading="lazy">
+      <span class="banner-petal petal-one" aria-hidden="true"></span><span class="banner-petal petal-two" aria-hidden="true"></span>
+    </section>
+
+    <footer class="site-footer"><a class="footer-brand" data-view="home" href="#inicio">florê<span aria-hidden="true">✳</span></a><p>Pequenos gestos. Grandes sentimentos.</p><p class="demo-disclaimer">Loja de apresentação. Nome, produtos e valores ilustrativos.<br>Esta versão não recebe pedidos nem pagamentos.</p><button class="text-link" data-action="about">Sobre esta apresentação</button></footer>
+    <noscript><p class="noscript-note">Ative o JavaScript para explorar os buquês, os detalhes e a sacola.</p></noscript>
+  </main>
+
+  <nav class="mobile-nav" aria-label="Menu da loja">
+    <button class="mobile-nav-item is-active" data-view="home"><span class="nav-icon" data-icon="home"></span><span>Início</span></button>
+    <button class="mobile-nav-item" data-view="catalog"><span class="nav-icon" data-icon="flower"></span><span>Buquês</span></button>
+    <button class="mobile-nav-item" data-action="search"><span class="nav-icon" data-icon="search"></span><span>Buscar</span></button>
+    <button class="mobile-nav-item" data-view="favorites"><span class="nav-icon" data-icon="heart"></span><span>Favoritos</span></button>
+    <button class="mobile-nav-item" data-action="cart"><span class="nav-icon" data-icon="bag"></span><span>Sacola</span><span class="nav-badge" data-cart-count hidden>0</span></button>
+  </nav>
+
+  <dialog id="product-dialog" class="product-dialog" aria-label="Detalhes do buquê">
+    <div id="product-detail"></div>
+  </dialog>
+
+  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title">
+    <header class="dialog-header"><button class="icon-button back-button" data-close="cart-dialog" aria-label="Fechar sacola"><span data-icon="arrow-left"></span></button><h2 id="cart-title">Sua sacola</h2><span class="dialog-count" id="cart-header-count"></span></header>
+    <div class="cart-view" id="cart-view"><div id="cart-items" class="cart-items"></div><div class="cart-footer" id="cart-footer"></div></div>
+    <div class="checkout-view" id="checkout-view" hidden>
+      <button class="text-link checkout-back" data-action="back-to-cart">← Voltar à sacola</button>
+      <p class="checkout-intro">Um último toque de carinho.</p>
+      <form id="checkout-form">
+        <label>Seu primeiro nome<input name="customer" required maxlength="60" autocomplete="given-name" placeholder="Como podemos chamar você?"></label>
+        <label>Como prefere receber?<select name="delivery"><option value="Entrega a combinar">Entrega a combinar</option><option value="Retirada a combinar">Retirada a combinar</option></select></label>
+        <label>Data desejada<input type="date" name="date" required id="delivery-date"></label>
+        <label>Um recadinho para acompanhar <span class="optional">(opcional)</span><textarea name="message" rows="3" maxlength="300" placeholder="Escreva algo especial..."></textarea></label>
+        <div class="checkout-total"><span>Subtotal dos buquês</span><strong id="checkout-total"></strong></div>
+        <button class="primary-button full-width" type="submit">Ver resumo do pedido <span data-icon="arrow-right"></span></button>
+        <p class="checkout-demo">Simulação de apresentação. Nenhum pedido será enviado e nenhuma cobrança será feita.</p>
+      </form>
+    </div>
+    <div class="order-view" id="order-view" hidden></div>
+  </dialog>
+
+  <dialog id="filter-dialog" class="small-dialog" aria-labelledby="filter-title">
+    <header class="dialog-header"><h2 id="filter-title">Encontre o seu buquê</h2><button class="icon-button" data-close="filter-dialog" aria-label="Fechar filtros"><span data-icon="x"></span></button></header>
+    <form id="filter-form" class="filter-form"><label>Tipo de flor<select name="category"><option value="all">Todas as flores</option><option value="rosas">Rosas</option><option value="lirios">Lírios</option><option value="campo">Flores do campo</option><option value="especiais">Especiais</option></select></label><label>Ordenar por<select name="sort"><option value="featured">Seleção Florê</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="name">Nome do buquê</option></select></label><button class="primary-button full-width" type="submit">Ver buquês <span data-icon="arrow-right"></span></button></form>
+  </dialog>
+
+  <dialog id="about-dialog" class="small-dialog about-dialog" aria-labelledby="about-title">
+    <header class="dialog-header"><h2 id="about-title">Um carinho que floresce.</h2><button class="icon-button" data-close="about-dialog" aria-label="Fechar informações"><span data-icon="x"></span></button></header>
+    <img src="./assets/flore.svg" alt="" width="64" height="64"><p>A Florê é uma loja demonstrativa de buquês, pensada para apresentar uma experiência delicada: escolha suas flores, salve seus favoritos e monte sua sacola.</p><p>O nome, as composições e os preços são exemplos de apresentação. O checkout é uma simulação, sem envio de pedidos ou pagamentos.</p><button class="primary-button full-width" data-close="about-dialog">Continuar explorando</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
