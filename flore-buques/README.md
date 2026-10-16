@@ -9,6 +9,8 @@ https://carloszw45.github.io/prototipos-sites/flore-buques/
 ## Experiência
 
 - Dois produtos por linha no celular e quatro no computador.
+- Cards compactos com a área das fotos preservada e cabeçalho somente com a marca tipográfica.
+- Imagens responsivas de 600 × 750 pixels no catálogo e 1200 × 1500 pixels nos detalhes.
 - Categorias, seleções especiais, busca, filtros e ordenação.
 - Detalhes dos buquês, favoritos e sacola persistidos no navegador.
 - Quantidades, subtotais e resumo de pedido com opção de copiar.
@@ -26,15 +28,15 @@ Nome, produtos e preços são ilustrativos. Nenhuma avaliação, disponibilidade
 
 Fotografias de catálogo Teleflora/eFlorist, usadas como referências visuais ilustrativas. As imagens devem ser substituídas pelas fotografias autorizadas dos produtos reais antes de transformar a demonstração em uma loja comercial.
 
-| Arquivo | Fonte |
+| Arquivos | Fonte em alta resolução |
 | --- | --- |
-| jardim-lilas.webp | https://assets.eflorist.com/assets/products/PHR_/T50-1A.jpg |
-| rosas-rubi.webp | https://assets.eflorist.com/assets/products/PHR_/T65-1A.jpg |
-| doce-encanto.webp | https://assets.eflorist.com/assets/products/PHR_/TEV12-2A.jpg |
-| rosas-de-afeto.webp | https://assets.eflorist.com/assets/products/PHR_/T4-1A.jpg |
-| serenidade.webp | https://assets.eflorist.com/assets/products/PHR_/T55-1A.jpg |
-| amor-em-cores.webp | https://assets.eflorist.com/assets/products/PHR_/T9-3A.jpg |
-| luz-do-dia.webp | https://assets.eflorist.com/assets/products/PHR_/T66-1A.jpg |
-| jardim-primavera.webp | https://assets.eflorist.com/assets/products/PHR_/TSP02-1A.jpg |
+| jardim-lilas-v2.webp / jardim-lilas-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3AT50-1A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/T50-1A/jardim-lilas |
+| rosas-rubi-v2.webp / rosas-rubi-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3AT65-1A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/T65-1A/rosas-rubi |
+| doce-encanto-v2.webp / doce-encanto-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3ATEV12-2A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/TEV12-2A/doce-encanto |
+| rosas-de-afeto-v2.webp / rosas-de-afeto-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3AT4-1A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/T4-1A/rosas-de-afeto |
+| serenidade-v2.webp / serenidade-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3AT55-1A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/T55-1A/serenidade |
+| amor-em-cores-v2.webp / amor-em-cores-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3AT9-3A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/T9-3A/amor-em-cores |
+| luz-do-dia-v2.webp / luz-do-dia-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3AT66-1A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/T66-1A/luz-do-dia |
+| jardim-primavera-v2.webp / jardim-primavera-v2-hd.webp | https://img.teleflora.com/images/o_0/l_flowers%3ATSP02-1A%2Cpg_6/w_1200%2Ch_1500%2Ccs_no_cmyk%2Cc_pad/f_jpg%2Cq_95/flowers/TSP02-1A/jardim-primavera |
 
 Fonte DM Sans: Google Fonts / Colophon Foundry, licença SIL Open Font License. A marca vetorial Florê foi desenhada para esta demonstração.
